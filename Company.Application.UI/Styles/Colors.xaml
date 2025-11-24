@@ -3,4 +3,8 @@
         <GradientStop Offset="0.0" Color="#FF4A90E2" />
         <GradientStop Offset="1.0" Color="#FF50E3C2" />
     </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Company.Main.Background">
+        <GradientStop Offset="0.0" Color="AliceBlue" />
+        <GradientStop Offset="1.0" Color="Aquamarine" />
+    </LinearGradientBrush>
 </ResourceDictionary>

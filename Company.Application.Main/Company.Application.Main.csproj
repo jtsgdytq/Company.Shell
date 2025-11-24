@@ -288,7 +288,24 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Application.Share\Company.Application.Share.csproj">
+      <Project>{b80cb231-c125-405a-a87b-2a00eff99bf2}</Project>
+      <Name>Company.Application.Share</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Application.UI\Company.Application.UI.csproj">
+      <Project>{6f74f090-2145-4654-913d-cf68e5869d6e}</Project>
+      <Name>Company.Application.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Core\Company.Core.csproj">
+      <Project>{77148bae-2b3a-4721-8cce-bc048331e424}</Project>
+      <Name>Company.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Logger\Company.Logger.csproj">
+      <Project>{bc3e0017-7815-401d-8032-f335ac432d6b}</Project>
+      <Name>Company.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\MainView.xaml">
       <SubType>Designer</SubType>

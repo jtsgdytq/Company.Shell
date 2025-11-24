@@ -2,6 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/Company.Application.UI;component/Styles/MahApps.xaml" />
         <ResourceDictionary Source="pack://application:,,,/Company.Application.UI;component/Styles/Colors.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Company.Application.UI;component/Styles/RadioButton.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>
