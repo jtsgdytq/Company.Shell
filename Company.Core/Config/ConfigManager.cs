@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 
 namespace Company.Core.Config
 {
-    internal class ConfigManager : IConfigManager
+    public class ConfigManager : IConfigManager
     {
         private string root="Config";
 
+        public static bool NoHardwareMode { get; set; } = true;
         /// <summary>
         /// 根据key获取配置文件路径 路径格式为 程序的根目录路径/Config/{key}.json
         /// </summary>

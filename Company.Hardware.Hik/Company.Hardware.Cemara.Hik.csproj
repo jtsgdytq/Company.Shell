@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{77148BAE-2B3A-4721-8CCE-BC048331E424}</ProjectGuid>
+    <ProjectGuid>{33806800-F9F9-458B-88C5-DEEE5E8E6948}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Company.Core</RootNamespace>
-    <AssemblyName>Company.Core</AssemblyName>
+    <RootNamespace>Company.Hardware.Hik</RootNamespace>
+    <AssemblyName>Company.Hardware.Hik</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,9 +42,6 @@
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -119,22 +116,30 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config\ConfigManager.cs" />
-    <Compile Include="Config\IConfigManager.cs" />
-    <Compile Include="CoreModel.cs" />
-    <Compile Include="Enums\ConfigKey.cs" />
-    <Compile Include="Enums\RoleKey.cs" />
-    <Compile Include="Helpers\JsonHelp.cs" />
-    <Compile Include="Models\ImageU8C1.cs" />
-    <Compile Include="Models\ImageU8C3.cs" />
-    <Compile Include="Models\Name.cs" />
+    <Compile Include="CameraHik_CS050_60GM.cs" />
+    <Compile Include="HikCemaraModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Company.Core\Company.Core.csproj">
+      <Project>{77148BAE-2B3A-4721-8CCE-BC048331E424}</Project>
+      <Name>Company.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Hardware.Cammara.Base\Company.Hardware.Cemara.Base.csproj">
+      <Project>{BF72943E-DE23-4599-B732-7D6961E94AF5}</Project>
+      <Name>Company.Hardware.Cemara.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="dll\MvCameraControl.Net.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.8.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.8.0\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -144,4 +149,9 @@
     <Error Condition="!Exists('..\packages\Fody.6.8.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.8.0\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\ReactiveUI.Fody.19.5.41\build\ReactiveUI.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ReactiveUI.Fody.19.5.41\build\ReactiveUI.Fody.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "D:\test\campony\Company.Shell\Company.Hardware.Hik\bin\Debug\Company.Hardware.Hik.dll" "$(SolutionDir)\Company.Shell\bin\Debug\" /Y /S
+
+xcopy "D:\test\campony\Company.Shell\Company.Hardware.Hik\dll\*.dll" "$(SolutionDir)\Company.Shell\bin\Debug\" /Y /S</PostBuildEvent>
+  </PropertyGroup>
 </Project>
