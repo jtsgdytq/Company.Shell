@@ -23,7 +23,7 @@ namespace Company.Application.Initialize.Server
         {
             if(Initialized)   throw new Exception("硬件已初始化");
 
-            await Task.Delay(2000);
+            await Task.Delay(5000);
             IniteResulte resulte = new IniteResulte();
             resulte.IsSuccess = true;
             resulte.Message = "硬件初始化成功";

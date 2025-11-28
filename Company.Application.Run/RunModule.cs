@@ -6,20 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Company.Application.Main
+namespace Company.Application.Run
 {
-    [Module(ModuleName = "MainModule", OnDemand = false)]
-    [ModuleDependency("RunModule")]
-    public class MainModule : IModule
+    [Module(ModuleName = "RunModule", OnDemand = false)] // 设置为按需加载
+   
+    public class RunModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-           
+            
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterForNavigation<Views.MainView>("MainView");
+            containerRegistry.RegisterForNavigation<Views.RunView>("RunView");
         }
     }
 }

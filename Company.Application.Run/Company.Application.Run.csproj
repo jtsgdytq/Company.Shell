@@ -5,10 +5,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5D1639EF-F13D-4329-9535-BA72A86CA1A3}</ProjectGuid>
+    <ProjectGuid>{C845C961-BF9C-4999-A812-68A2C594BE2B}</ProjectGuid>
     <OutputType>library</OutputType>
-    <RootNamespace>Company.Application.Initialize</RootNamespace>
-    <AssemblyName>Company.Application.Initialize</AssemblyName>
+    <RootNamespace>Company.Application.Run</RootNamespace>
+    <AssemblyName>Company.Application.Run</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -259,7 +259,6 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IniteModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -273,10 +272,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Server\HandwareManager.cs" />
-    <Compile Include="ViewModels\IniteViewModel.cs" />
-    <Compile Include="Views\IniteView.xaml.cs">
-      <DependentUpon>IniteView.xaml</DependentUpon>
+    <Compile Include="RunModule.cs" />
+    <Compile Include="ViewModels\RunVIewModel.cs" />
+    <Compile Include="Views\RunView.xaml.cs">
+      <DependentUpon>RunView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -291,16 +290,20 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Company.Application.Share\Company.Application.Share.csproj">
-      <Project>{B80CB231-C125-405A-A87B-2A00EFF99BF2}</Project>
+      <Project>{b80cb231-c125-405a-a87b-2a00eff99bf2}</Project>
       <Name>Company.Application.Share</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Application.UI\Company.Application.UI.csproj">
+      <Project>{6f74f090-2145-4654-913d-cf68e5869d6e}</Project>
+      <Name>Company.Application.UI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Company.Core\Company.Core.csproj">
-      <Project>{77148BAE-2B3A-4721-8CCE-BC048331E424}</Project>
+      <Project>{77148bae-2b3a-4721-8cce-bc048331e424}</Project>
       <Name>Company.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\IniteView.xaml">
+    <Page Include="Views\RunView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

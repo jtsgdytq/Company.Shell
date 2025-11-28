@@ -1,5 +1,7 @@
-﻿using Company.Application.Login.ViewModels;
+﻿using Company.Application.Login.Service;
+using Company.Application.Login.ViewModels;
 using Company.Application.Login.Views;
+using Company.Application.Share.Login;
 using Prism.Ioc;
 using Prism.Modularity;
 using System;
@@ -19,6 +21,7 @@ namespace Company.Application.Login
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
           containerRegistry.RegisterForNavigation<LoginView>();
+          containerRegistry.RegisterSingleton<ISession, Session>();
         }
     }
 }

@@ -121,8 +121,10 @@
   <ItemGroup>
     <Compile Include="EventModels\IniteEvent.cs" />
     <Compile Include="EventModels\LoginEvent.cs" />
+    <Compile Include="EventModels\LogoutEvent.cs" />
     <Compile Include="Inite\IHandwareManager.cs" />
     <Compile Include="Inite\IniteResulte.cs" />
+    <Compile Include="Login\ISession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,16 +2,26 @@
     x:Class="Company.Application.Main.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:core="clr-namespace:Company.Core;assembly=Company.Core"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:local="clr-namespace:Company.Application.Main.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="http://prismlibrary.com/"
     xmlns:vm="clr-namespace:Company.Application.Main.ViewModels"
     d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
     d:DesignHeight="900"
     d:DesignWidth="1500"
     Background="{StaticResource Company.Main.Background}"
     mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Company.Application.UI;component/Styles/RadioButton.xaml" />
+                <ResourceDictionary Source="/Company.Application.UI;component/Styles/Colors.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -30,7 +40,7 @@
                             Kind="RegularHome" />
                     </RadioButton.Tag>
                 </RadioButton>
-                <RadioButton Style="{StaticResource RadioButton.Menu.Style}" Content="设置">
+                <RadioButton Content="设置" Style="{StaticResource RadioButton.Menu.Style}">
                     <RadioButton.Tag>
                         <iconPacks:PackIconFeatherIcons
                             Width="20"
@@ -38,23 +48,23 @@
                             Kind="Settings" />
                     </RadioButton.Tag>
                 </RadioButton>
-                <RadioButton Content="相机标定" Style="{StaticResource RadioButton.Menu.Style}">
-                    
-                </RadioButton>
+                <RadioButton Content="相机标定" Style="{StaticResource RadioButton.Menu.Style}" />
 
-                <RadioButton Content="Mark校准" Style="{StaticResource RadioButton.Menu.Style}">
-
-                </RadioButton>
-                <RadioButton Content="轴校准" Style="{StaticResource RadioButton.Menu.Style}">
-
-                </RadioButton>
-                <RadioButton Content="BOM管理" Style="{StaticResource RadioButton.Menu.Style}">
-
-                </RadioButton>
-                <RadioButton Content="用户切换" Style="{StaticResource RadioButton.Menu.Style}">
-
-                </RadioButton>
+                <RadioButton Content="Mark校准" Style="{StaticResource RadioButton.Menu.Style}" />
+                <RadioButton Content="轴校准" Style="{StaticResource RadioButton.Menu.Style}" />
+                <RadioButton Content="BOM管理" Style="{StaticResource RadioButton.Menu.Style}" />
+                <RadioButton
+                    Command="{Binding LogoutCommand}"
+                    Content="用户切换"
+                    Style="{StaticResource RadioButton.Menu.Style}" />
             </StackPanel>
+            <ContentControl Grid.Row="1" prism:RegionManager.RegionName="MainViewRegion">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding MainViewLoadedCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ContentControl>
         </Grid>
         <Grid Background="Black" Visibility="Hidden" />
     </Grid>

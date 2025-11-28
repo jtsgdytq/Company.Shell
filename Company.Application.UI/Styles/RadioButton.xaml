@@ -40,4 +40,27 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="RadioButton.Preview.Style" TargetType="RadioButton">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border Background="Transparent">
+                        <ContentControl
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            Foreground="{TemplateBinding Foreground}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Foreground" Value="#00AE42" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#2B6DF7" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

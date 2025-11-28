@@ -16,6 +16,8 @@ namespace Company.Core.Models
 
         public const string  MainView = "MainView"; // 主视图名称
 
-       
+        public const string  MainViewRegion = "MainViewRegion"; // 主视图区域名称
+
+
     }
 }
