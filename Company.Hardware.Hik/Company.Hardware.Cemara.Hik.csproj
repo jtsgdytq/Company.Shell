@@ -43,6 +43,10 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
+    <Reference Include="MvCameraControl.Net, Version=3.4.0.1, Culture=neutral, PublicKeyToken=52fddfb3f94be800, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\BaiduNetdiskDownload\C#+WPF+Opencv模块化开发视觉对位运动控制系统\38362 C#+WPF+Opencv模块化开发视觉对位运动控制系统\资料\课程源码\课程源码\开发资料\Hik\MvCameraControl.Net.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
@@ -133,6 +137,10 @@
       <Project>{BF72943E-DE23-4599-B732-7D6961E94AF5}</Project>
       <Name>Company.Hardware.Cemara.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Logger\Company.Logger.csproj">
+      <Project>{bc3e0017-7815-401d-8032-f335ac432d6b}</Project>
+      <Name>Company.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -153,5 +161,9 @@
     <PostBuildEvent>xcopy "D:\test\campony\Company.Shell\Company.Hardware.Hik\bin\Debug\Company.Hardware.Hik.dll" "$(SolutionDir)\Company.Shell\bin\Debug\" /Y /S
 
 xcopy "D:\test\campony\Company.Shell\Company.Hardware.Hik\dll\*.dll" "$(SolutionDir)\Company.Shell\bin\Debug\" /Y /S</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
