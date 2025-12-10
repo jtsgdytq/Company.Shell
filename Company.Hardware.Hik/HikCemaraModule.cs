@@ -25,6 +25,7 @@ namespace Company.Hardware.Cammara.Hik
             // 注册海康相机在硬件模式下注册相机
             if (!ConfigManager.NoHardwareMode)
             {
+                //注册两个相机实例
                 containerRegistry.RegisterSingleton<ICamera, CameraHik_CS050_60GM>(CameraType.left.ToString());
                 containerRegistry.RegisterSingleton<ICamera, CameraHik_CS050_60GM>(CameraType.right.ToString());
             }

@@ -2,6 +2,7 @@
 using Company.Application.Initialize.ViewModels;
 using Company.Application.Initialize.Views;
 using Company.Application.Share.Inite;
+using Company.Core.Models;
 using Prism.Ioc;
 using Prism.Modularity;
 using System;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace Company.Application.Initialize
 {
     [Module(ModuleName = "IniteModule", OnDemand = true)] // 延迟加载模块
+   
     public class IniteModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

@@ -19,5 +19,7 @@ namespace Company.Core.Models
         public const string  MainViewRegion = "MainViewRegion"; // 主视图区域名称
 
         public const string CameraHikModule = "CameraHikModule"; // 海康相机模块名称
+
+        public const string CameraEmulationModule = "CameraEmulationModule"; // 仿真相机模块名称
     }
 }

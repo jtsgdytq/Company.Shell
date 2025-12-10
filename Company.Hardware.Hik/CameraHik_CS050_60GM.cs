@@ -1,14 +1,17 @@
-﻿using Company.Core.Models;
+﻿using Company.Core.Helpers;
+using Company.Core.Models;
 using Company.Hardware.Cammara.Base;
 using Company.Logger;
 using MvCamCtrl.NET;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static MvCamCtrl.NET.MyCamera;
 
@@ -21,6 +24,8 @@ namespace Company.Hardware.Cammara.Hik
         private MyCamera.cbOutputExdelegate MyCameraHandler;  // 回调函数委托
 
         private CameraConfig CameraConfig; // 相机配置
+
+        private IntPtr IntPtr = IntPtr.Zero; // 图像数据指针
 
         public ImageU8C1 ImageU8C1 { get; set; }
 
@@ -42,6 +47,7 @@ namespace Company.Hardware.Cammara.Hik
 
         public event Action<ImageU8C1> OnGrabbed;
 
+        private AutoResetEvent wait =new AutoResetEvent(false);  // 同步信号
 
 
         public CameraHik_CS050_60GM()
@@ -54,7 +60,41 @@ namespace Company.Hardware.Cammara.Hik
 
         public void Close()
         {
-            throw new NotImplementedException();
+           var result=MyCamera.MV_CC_StopGrabbing_NET(); // 停止采集图像
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"停止采集图像失败,错误码{result}");
+            }
+            else
+            {
+                Logs.LogInfo("停止采集图像成功");
+            }
+            result=MyCamera.MV_CC_CloseDevice_NET(); // 关闭相机
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"关闭相机失败,错误码{result}");
+            }
+            else
+            {
+                Logs.LogInfo("关闭相机成功");
+            }
+            result=MyCamera.MV_CC_DestroyDevice_NET(); // 销毁相机
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"销毁相机失败,错误码{result}");
+            }
+            else
+            {
+                Logs.LogInfo("销毁相机成功");
+            }
+            if(IntPtr!=IntPtr.Zero)
+            {
+                Marshal.FreeHGlobal(IntPtr); // 释放图像内存
+                IntPtr = IntPtr.Zero;
+            }
+            Initialized = false;
+            Connected= false;
+
         }
 
         public float GetExposureTime()
@@ -220,27 +260,103 @@ namespace Company.Hardware.Cammara.Hik
 
         private void OnGrab(IntPtr pData, ref MV_FRAME_OUT_INFO_EX pFrameInfo, IntPtr pUser)
         {
+            try
+            {
+                if(IntPtr==IntPtr.Zero)  // 分配图像内存
+                {
+                    IntPtr=Marshal.AllocHGlobal(new IntPtr(Width*Height));
+                }
+
+                // 将图像数据拷贝到预分配的内存中
+                MemeryHelper.CopyMemory(IntPtr, pData, Width * Height);
+
+               ImageU8C1 = new ImageU8C1(IntPtr, Width, Height);
+
+                // 触发图像采集事件 将图像数据传递出去
+                OnGrabbed?.Invoke(ImageU8C1);
+
             
+            }
+            catch ( Exception e)
+            {
+                Logs.LogError(e);
+            }
+            finally
+            {
+                wait.Set();
+            }
+
         }
 
         public bool Load(string filename)
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 相机曝光时间设置
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool SetExposureTime(float value)
         {
-            throw new NotImplementedException();
-        }
+             var result= MyCamera.MV_CC_SetFloatValue_NET("ExposureTime", value);
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"设置曝光时间失败,错误码{result}");
+                return false;
+            }
+            else
+            {
+                Logs.LogInfo($"设置曝光时间成功,曝光时间{value}us");
+                return true;
+            }
 
+        }
+        /// <summary>
+        /// 设置增益
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool SetGain(float value)
         {
-            throw new NotImplementedException();
+            var result= MyCamera.MV_CC_SetFloatValue_NET("Gain", value);
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"设置增益失败,错误码{result}");
+                return false;
+            }
+            else
+            {
+                Logs.LogInfo($"设置增益成功,增益{value}dB");
+                return true;
+            }
         }
-
+        /// <summary>
+        /// 相机触发设置
+        /// </summary>
+        /// <returns></returns>
         public bool Trigger()
         {
-            throw new NotImplementedException();
+            Stopwatch stopwatch  = Stopwatch.StartNew();
+
+            var result= MyCamera.MV_CC_SetCommandValue_NET("TriggerSoftware"); // 软触发
+            if (result != MyCamera.MV_OK)
+            {
+                Logs.LogError($"相机触发失败,错误码{result}");
+                return false;
+            }
+            else
+            {
+                Logs.LogInfo($"相机触发成功,耗时{stopwatch.ElapsedMilliseconds}ms");
+            }
+            var r= wait.WaitOne(1000); // 等待图像采集完成，超时1秒
+
+            if(!r)
+            {
+                Logs.LogError("相机采集图像超时");
+                return false;
+            }
+            return r;
         }
     }
 }
