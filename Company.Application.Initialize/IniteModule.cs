@@ -14,7 +14,12 @@ using System.Threading.Tasks;
 namespace Company.Application.Initialize
 {
     [Module(ModuleName = "IniteModule", OnDemand = true)] // 延迟加载模块
-   
+
+    
+    [ModuleDependency("ConfigModule")]
+    [ModuleDependency("HikCemaraModule")]
+    [ModuleDependency("CameraEmulationModule")]
+
     public class IniteModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

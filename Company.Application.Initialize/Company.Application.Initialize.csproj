@@ -298,6 +298,10 @@
       <Project>{77148BAE-2B3A-4721-8CCE-BC048331E424}</Project>
       <Name>Company.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Company.Hardware.Cammara.Base\Company.Hardware.Cemara.Base.csproj">
+      <Project>{BF72943E-DE23-4599-B732-7D6961E94AF5}</Project>
+      <Name>Company.Hardware.Cemara.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\IniteView.xaml">

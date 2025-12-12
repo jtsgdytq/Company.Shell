@@ -28,6 +28,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PreferNativeArm64>true</PreferNativeArm64>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -327,7 +329,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\Bom\left.bmp" />
+    <Resource Include="images\Bom\right.bmp" />
+    <None Include="images\left.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Resource Include="images\Mark\left12.bmp" />
+    <Resource Include="images\Mark\left16.bmp" />
+    <Resource Include="images\Mark\left24.bmp" />
+    <Resource Include="images\Mark\left8.bmp" />
+    <Resource Include="images\Mark\right12.bmp" />
+    <Resource Include="images\Mark\right16.bmp" />
+    <Resource Include="images\Mark\right24.bmp" />
+    <Resource Include="images\Mark\right8.bmp" />
+    <None Include="images\right.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Resource Include="images\Silk\left1740.bmp" />
+    <Resource Include="images\Silk\left3.bmp" />
+    <Resource Include="images\Silk\right1740.bmp" />
+    <Resource Include="images\Silk\right3.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Views\ShellView.xaml">
       <SubType>Designer</SubType>

@@ -7,6 +7,8 @@
     xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
     xmlns:local="clr-namespace:Company.Application.Run.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Company.Application.Run.ViewModels"
+    d:DataContext="{d:DesignInstance Type=vm:RunViewModel}"
     d:DesignHeight="900"
     d:DesignWidth="1500"
     mc:Ignorable="d">
@@ -28,7 +30,9 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" />
+            <StackPanel Grid.Row="0" >
+               
+            </StackPanel>
         </Grid>
         <!--  右边  -->
         <Grid Grid.Column="1">
@@ -139,6 +143,8 @@
                     </WrapPanel>
                 </StackPanel>
             </Border>
+
+            <Image Source="{Binding BItmapGDI.ImageSource}"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -64,7 +65,11 @@ namespace Company.Hardware.Camera.Emulation
         {
             throw new NotImplementedException();
         }
-
+        /// <summary>
+        /// 初始化相机
+        /// </summary>
+        /// <param name="cameraConfig"></param>
+        /// <returns></returns>
         public bool Init(CameraConfig cameraConfig)
         {
             try
@@ -73,13 +78,14 @@ namespace Company.Hardware.Camera.Emulation
                 {
                     IntPtr = System.Runtime.InteropServices.Marshal.AllocHGlobal(Height * Width);
                 }
-                var filename= $"Images\\{cameraConfig.Direction}.bmp";
-                if(System.IO.File.Exists (filename))
+                var filename = Path.Combine("images", $"{cameraConfig.Direction}.bmp");
+                
+                if (System.IO.File.Exists (filename))
                 {
                    Bitmap bitmap= ImageHelper.Load (filename);
                     if(bitmap.Width != Width || bitmap.Height != Height)
                     {
-                        Logs.LogError($"CameraEmulation Init Failed: Image size mismatch. Expected {Width}x{Height}, got {bitmap.Width}x{bitmap.Height}");
+                        Logs.LogError($"模拟相机初始化失败: 图像宽高不匹配. Expected {Width}x{Height}, got {bitmap.Width}x{bitmap.Height}");
                         return false;
                     }
                     // 锁定8位图的像素数据
@@ -97,7 +103,7 @@ namespace Company.Hardware.Camera.Emulation
                 }
                 else
                 {
-                    Logs.LogError($"CameraEmulation Init Failed: File {filename} not found");
+                    Logs.LogError($"模拟相机初始化失败: 文件 {filename} 未被发现");
                     return false;
                 }
 
@@ -105,7 +111,7 @@ namespace Company.Hardware.Camera.Emulation
             catch ( Exception e)
             {
                
-               Logs.LogError("CameraEmulation Init Failed", e);
+               Logs.LogError("模拟相机初始化失败", e);
                 return false;
             }
           

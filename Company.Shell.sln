@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Hardware.Cemara.Hik
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Hardware.Camera.Emulation", "Company.Hardware.Camera.Emulation\Company.Hardware.Camera.Emulation.csproj", "{53A8B9B2-DB79-4616-BCBF-968144AF2CD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.Application.Config", "Company.Application.Config\Company.Application.Config.csproj", "{60F4B6BB-F307-485B-8405-73005E3EF6BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{53A8B9B2-DB79-4616-BCBF-968144AF2CD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53A8B9B2-DB79-4616-BCBF-968144AF2CD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53A8B9B2-DB79-4616-BCBF-968144AF2CD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F4B6BB-F307-485B-8405-73005E3EF6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F4B6BB-F307-485B-8405-73005E3EF6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F4B6BB-F307-485B-8405-73005E3EF6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F4B6BB-F307-485B-8405-73005E3EF6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{BF72943E-DE23-4599-B732-7D6961E94AF5} = {868AAA1C-F853-479B-8106-1AD654B1D047}
 		{33806800-F9F9-458B-88C5-DEEE5E8E6948} = {868AAA1C-F853-479B-8106-1AD654B1D047}
 		{53A8B9B2-DB79-4616-BCBF-968144AF2CD9} = {868AAA1C-F853-479B-8106-1AD654B1D047}
+		{60F4B6BB-F307-485B-8405-73005E3EF6BA} = {7C1C59C4-B731-4581-A336-E7FAEE3A3662}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBB64C1C-FA56-4DF4-981C-FB32AA2523EE}

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Company.Hardware.Cammara.Hik
 {
-    [Module(ModuleName = Names.CameraHikModule, OnDemand = true)] //延迟加载
+    [Module(ModuleName = Names.HikCemaraModule, OnDemand = true)] //延迟加载
     public class HikCemaraModule : IModule
     {
         public void OnInitialized(IContainerProvider containerProvider)

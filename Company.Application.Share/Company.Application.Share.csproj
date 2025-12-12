@@ -119,6 +119,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\ISystemConfigManager.cs" />
+    <Compile Include="Config\SoftwareConfig.cs" />
     <Compile Include="EventModels\IniteEvent.cs" />
     <Compile Include="EventModels\LoginEvent.cs" />
     <Compile Include="EventModels\LogoutEvent.cs" />
@@ -135,6 +137,10 @@
     <ProjectReference Include="..\Company.DataBase.Base\Company.DataBase.Base.csproj">
       <Project>{0AD2A8B4-F5EE-4884-BD5C-7BEAEAE5CD0F}</Project>
       <Name>Company.DataBase.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Company.Hardware.Cammara.Base\Company.Hardware.Cemara.Base.csproj">
+      <Project>{bf72943e-de23-4599-b732-7d6961e94af5}</Project>
+      <Name>Company.Hardware.Cemara.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

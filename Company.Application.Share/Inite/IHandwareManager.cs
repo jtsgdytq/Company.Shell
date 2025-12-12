@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company.Hardware.Cammara.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,10 @@ namespace Company.Application.Share.Inite
     {
         bool Initialized { get; }
         Task<IniteResulte> InitAsync();
-      
+
+         ICamera LeftCamera { get; }
+
+         ICamera RightCamera { get; }
+
     }
 }
