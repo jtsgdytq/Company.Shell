@@ -1,4 +1,5 @@
-﻿using Prism.Ioc;
+﻿using Company.Application.Share.Run;
+using Prism.Ioc;
 using Prism.Modularity;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace Company.Application.Run
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<Views.RunView>("RunView");
+            containerRegistry.RegisterSingleton<IPhotoManager, Service.PhotoManager>();
         }
     }
 }

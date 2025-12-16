@@ -1,0 +1,41 @@
+﻿<UserControl
+    x:Class="Company.Application.UI.Controls.CameraBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Company.Application.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid
+        x:Name="viewport"
+        Background="Transparent"
+        MouseDown="viewport_MouseLeftButtonDown"
+        MouseLeave="viewport_MouseLeave"
+        MouseLeftButtonUp="viewport_MouseLeftButtonUp"
+        MouseMove="viewport_MouseMove"
+        MouseRightButtonUp="viewport_MouseRightButtonUp"
+        MouseWheel="viewport_MouseWheel">
+        <Canvas ClipToBounds="True">
+            <Grid x:Name="imagebox">
+                <Image x:Name="image" Source="{Binding ImageSource, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+            </Grid>
+            <Rectangle
+                x:Name="rect"
+                Fill="Transparent"
+                Stroke="Red"
+                StrokeThickness="1" />
+            <TextBlock
+                x:Name="rectLabel"
+                FontSize="12"
+                Foreground="Green" />
+        </Canvas>
+        <TextBlock
+            x:Name="textblock"
+            Margin="15"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Foreground="Green"
+            Text="0" />
+    </Grid>
+</UserControl>

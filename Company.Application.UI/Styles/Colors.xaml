@@ -7,4 +7,35 @@
         <GradientStop Offset="0.0" Color="AliceBlue" />
         <GradientStop Offset="1.0" Color="Aquamarine" />
     </LinearGradientBrush>
+    <VisualBrush
+        x:Key="Border.Cell.Color"
+        TileMode="Tile"
+        Viewport="0,0,50,50"
+        ViewportUnits="Absolute">
+        <VisualBrush.Visual>
+            <Rectangle
+                Width="50"
+                Height="50"
+                Opacity="0.5">
+                <Rectangle.Fill>
+                    <DrawingBrush TileMode="Tile">
+                        <DrawingBrush.Drawing>
+                            <DrawingGroup>
+                                <GeometryDrawing Brush="White">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="0 0 25 25" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                                <GeometryDrawing Brush="White">
+                                    <GeometryDrawing.Geometry>
+                                        <RectangleGeometry Rect="25 25 25 25" />
+                                    </GeometryDrawing.Geometry>
+                                </GeometryDrawing>
+                            </DrawingGroup>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </VisualBrush.Visual>
+    </VisualBrush>
 </ResourceDictionary>

@@ -2,6 +2,7 @@
     x:Class="Company.Application.Run.Views.RunView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Company.Application.UI.Controls;assembly=Company.Application.UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -16,6 +17,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/Company.Application.UI;component/Styles/RadioButton.xaml" />
+                <ResourceDictionary Source="/Company.Application.UI;component/Styles/Colors.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -30,121 +32,129 @@
                 <RowDefinition Height="AUTO" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" >
-               
-            </StackPanel>
+            <StackPanel Grid.Row="0" />
         </Grid>
         <!--  右边  -->
-        <Grid Grid.Column="1">
-            <Border
-                Width="auto"
-                Height="55"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Top">
-                <Border.Background>
-                    <SolidColorBrush Color="#80FFFFFF" />
-                </Border.Background>
-                <StackPanel
+        <Border Grid.Column="1" Background="{StaticResource Border.Cell.Color}">
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border
+                    Grid.Row="0"
+                    Width="auto"
+                    Height="55"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Orientation="Vertical">
-                    <WrapPanel>
-                        <RadioButton IsChecked="True" Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="Cctv">
-                                    <iconpacks:PackIconMaterial.RenderTransform>
-                                        <ScaleTransform ScaleX="-1" ScaleY="1" />
-                                    </iconpacks:PackIconMaterial.RenderTransform>
-                                    <iconpacks:PackIconMaterial.RenderTransformOrigin>
-                                        <Point X="0.5" Y="0.5" />
-                                    </iconpacks:PackIconMaterial.RenderTransformOrigin>
-                                </iconpacks:PackIconMaterial>
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="Cctv" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Border
-                            Width="2"
-                            Height="30"
-                            Margin="10,0"
-                            Background="Black" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="CameraPlus" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="CameraControl" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="VectorCircle" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="VectorRectangle" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="ContentSave" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="FileDocument" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <Rectangle Width="10" />
-                        <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
-                            <RadioButton.Content>
-                                <iconpacks:PackIconMaterial
-                                    Width="45"
-                                    Height="45"
-                                    Kind="FileDocumentEdit" />
-                            </RadioButton.Content>
-                        </RadioButton>
-                    </WrapPanel>
-                </StackPanel>
-            </Border>
+                    VerticalAlignment="Top">
+                    <Border.Background>
+                        <SolidColorBrush Color="#80FFFFFF" />
+                    </Border.Background>
+                    <StackPanel
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Vertical">
+                        <WrapPanel>
+                            <RadioButton IsChecked="True" Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="Cctv">
+                                        <iconpacks:PackIconMaterial.RenderTransform>
+                                            <ScaleTransform ScaleX="-1" ScaleY="1" />
+                                        </iconpacks:PackIconMaterial.RenderTransform>
+                                        <iconpacks:PackIconMaterial.RenderTransformOrigin>
+                                            <Point X="0.5" Y="0.5" />
+                                        </iconpacks:PackIconMaterial.RenderTransformOrigin>
+                                    </iconpacks:PackIconMaterial>
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="Cctv" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Border
+                                Width="2"
+                                Height="30"
+                                Margin="10,0"
+                                Background="Black" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="CameraPlus" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="CameraControl" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="VectorCircle" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="VectorRectangle" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="ContentSave" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="FileDocument" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                            <Rectangle Width="10" />
+                            <RadioButton Style="{StaticResource RadioButton.Preview.Style}">
+                                <RadioButton.Content>
+                                    <iconpacks:PackIconMaterial
+                                        Width="45"
+                                        Height="45"
+                                        Kind="FileDocumentEdit" />
+                                </RadioButton.Content>
+                            </RadioButton>
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
 
-            <Image Source="{Binding BItmapGDI.ImageSource}"/>
-        </Grid>
+                <Grid Grid.Row="1">
+                    <controls:CameraBox ImageSource="{Binding PhotoManager.Current.ImageSource}" />
+                </Grid>
+
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

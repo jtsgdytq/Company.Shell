@@ -1,4 +1,5 @@
 ﻿using Company.Application.Share.Inite;
+using Company.Application.Share.Run;
 using Company.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,13 @@ namespace Company.Application.Run.ViewModels
     {
         public BItmapGDI BItmapGDI { get; set; }
 
-        public RunViewModel(IHandwareManager handwareManager)
+        public IPhotoManager PhotoManager { get; set; }
+
+        public RunViewModel(IHandwareManager handwareManager,IPhotoManager photoManager)
         {
-            BItmapGDI = new BItmapGDI(handwareManager.LeftCamera.Width, handwareManager.LeftCamera.Height);
-            BItmapGDI.WritePixle(handwareManager.LeftCamera.ImageU8C1, 0, 0);
+            PhotoManager = photoManager;
         }
+
+
     }
 }

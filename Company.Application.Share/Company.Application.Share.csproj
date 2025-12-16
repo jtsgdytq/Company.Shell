@@ -128,12 +128,17 @@
     <Compile Include="Inite\IniteResulte.cs" />
     <Compile Include="Login\ISession.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Run\IPhotoManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Company.Core\Company.Core.csproj">
+      <Project>{77148bae-2b3a-4721-8cce-bc048331e424}</Project>
+      <Name>Company.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Company.DataBase.Base\Company.DataBase.Base.csproj">
       <Project>{0AD2A8B4-F5EE-4884-BD5C-7BEAEAE5CD0F}</Project>
       <Name>Company.DataBase.Base</Name>
